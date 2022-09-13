@@ -1,13 +1,267 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Work+Sans:wght@700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --c-blue-main: #007bff;
+  --c-blue-dark: #0056bb;
+  --c-blue-light: #01c3ff;
+  --c-orange-dark: #fe7235;
+  --c-orange-medium: #fca313;
+  --c-orange-light: #fcf4ef;
+
+  --c-deep-dark: #151e2b;
+  --c-dark: #384351;
+  --c-grey: #7c7d80;
+  --c-medium-grey: #aaacb0;
+  --c-light-grey: #dadce1;
+  --c-white: #fafbff;
+
+  --title-font-fam: "Work Sans", sans-serif;
+  --main-font-fam: "Source Sans Pro", sans-serif;
+}
+
+body {
+  font-family: var(--main-font-fam);
+  color: var(--c-grey);
+  line-height: 1.5;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fs-38 {
+  font-size: 38px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.c-light-grey {
+  color: var(--c-light-grey);
+}
+
+.c-medium-grey {
+  color: var(--c-medium-grey);
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.title {
+  font-family: var(--main-font-fam);
+  color: var(--c-deep-dark);
+}
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 200px;
+  border: none;
+  padding: 10px 24px;
+  margin-top: 42px;
+  color: var(--c-white);
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2 ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+
+.btn-main {
+  background-color: var(--c-blue-main);
+}
+
+/* Links */
+
+.link {
+  text-decoration: none;
+  color: var(--c-blue-main);
+  transition: 0.2s ease;
+}
+
+.link:hover {
+  border-bottom: 1px solid var(--c-blue-main);
+}
+
+/* Landing page */
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url("./assets/png/house.png") no-repeat left center/ cover;
+  z-index: -2;
+  overflow: visible;
+}
+
+.container:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(var(--c-white), var(--c-light-grey));
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.logo {
+  position: relative;
+  width: fit-content;
+  position: fixed;
+  padding: 0 40px;
+}
+
+/* Sign in */
+
+.card-form {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 35%;
+  min-width: 550px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 100px 60px;
+}
+
+.card-form form {
+  margin-top: 80px;
+}
+
+.form-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+label {
+  color: var(--c-medium-grey);
+  margin-bottom: 8px;
+  transition: 0.2s ease;
+}
+
+input {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  color: var(--c-grey);
+  padding: 16px 12px;
+  background-color: rgba(218, 220, 225, 0.4);
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  /* border: 1px solid var(--c-blue-main); */
+}
+
+input:focus + label {
+  /* color: var(--c-blue-main); */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--c-grey) !important;
+}
+
+.password-input input {
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  bottom: 25px;
+  right: 12px;
+  transform: translateY(50%);
+  cursor: pointer;
+}
+
+/* Sign in page */
+
+/* Error message */
+.error-box {
+  padding: 0 10px;
+  width: 100%;
+  background-color: #fadbd8;
+  border-radius: 4px;
+  color: #cd6155;
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  animation: show 0.1s ease-in-out forwards;
+}
+
+.error-box h1 {
+  font-size: 14px;
+}
+
+@keyframes show {
+  30% {
+    padding: 12px 10px;
+    height: fit-content;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  60% {
+    padding: 12px 10px;
+    height: fit-content;
+    margin-bottom: 16px;
+    opacity: 0;
+    visibility: visible;
+  }
+
+  100% {
+    padding: 12px 10px;
+    height: fit-content;
+    margin-bottom: 16px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  margin: 8px 0;
+  float: right;
+}
+
+.sign-up {
+  position: absolute;
+  bottom: 64px;
+  display: block;
+  width: calc(100% - 120px);
+  text-align: center;
 }
