@@ -132,7 +132,7 @@ body {
   padding: 0 40px;
 }
 
-/* Sign in */
+/* Sign in/Sign up forms*/
 
 .card-form {
   position: fixed;
@@ -207,7 +207,14 @@ input:-webkit-autofill {
   cursor: pointer;
 }
 
-/* Sign in page */
+.sign-up,
+.sign-in {
+  position: absolute;
+  bottom: 64px;
+  display: block;
+  width: calc(100% - 120px);
+  text-align: center;
+}
 
 /* Error message */
 .error-box {
@@ -256,12 +263,4 @@ input:-webkit-autofill {
   font-size: 14px;
   margin: 8px 0;
   float: right;
-}
-
-.sign-up {
-  position: absolute;
-  bottom: 64px;
-  display: block;
-  width: calc(100% - 120px);
-  text-align: center;
 }
