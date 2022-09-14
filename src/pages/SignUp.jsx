@@ -52,7 +52,7 @@ function SignUp() {
 
       await setDoc(doc(db, "users", user.uid), { formDataCopy });
 
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       console.log(error);
       if (error.code == "auth/weak-password") {
@@ -94,11 +94,18 @@ function SignUp() {
               </div>
             )}
             <div className="form-group mb-15">
-              <input type="text" id="name" value={name} onChange={onChange} />
+              <input
+                autoComplete="off"
+                type="text"
+                id="name"
+                value={name}
+                onChange={onChange}
+              />
               <label htmlFor="name">Full name:</label>
             </div>
             <div className="form-group mb-15">
               <input
+                autoComplete="off"
                 type="text"
                 id="jobTitle"
                 value={jobTitle}
@@ -108,6 +115,7 @@ function SignUp() {
             </div>
             <div className="form-group mb-15">
               <input
+                autoComplete="off"
                 type="email"
                 id="email"
                 value={email}
@@ -118,6 +126,7 @@ function SignUp() {
 
             <div className="form-group password-input">
               <input
+                autoComplete="off"
                 type={showPassword ? "text" : "password"}
                 id="password"
                 value={password}
