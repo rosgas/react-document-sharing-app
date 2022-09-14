@@ -38,7 +38,7 @@ function SignIn() {
       );
 
       if (userCredential.user) {
-        navigate("/");
+        navigate("/profile");
       }
     } catch (error) {
       setErrorMessage("Incorrect email address or password");
@@ -77,6 +77,7 @@ function SignIn() {
             )}
             <div className="form-group mb-15">
               <input
+                autoComplete="off"
                 type="email"
                 id="email"
                 value={email}
@@ -87,6 +88,7 @@ function SignIn() {
 
             <div className="form-group password-input">
               <input
+                autoComplete="off"
                 type={showPassword ? "text" : "password"}
                 id="password"
                 value={password}
