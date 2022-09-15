@@ -19,7 +19,9 @@ function SignUp() {
     email: "",
     password: "",
   });
+
   const { email, password, name, jobTitle } = formData;
+
   const navigate = useNavigate();
 
   const onChange = (e) => {
@@ -46,11 +48,11 @@ function SignUp() {
         displayName: name,
       });
 
-      const formDataCopy = { ...formData };
-      delete formDataCopy.password;
-      formDataCopy.timestamp = serverTimestamp();
+      const userFormData = { ...formData };
+      delete userFormData.password;
+      userFormData.timestamp = serverTimestamp();
 
-      await setDoc(doc(db, "users", user.uid), { formDataCopy });
+      await setDoc(doc(db, "users", user.uid), { userFormData });
 
       navigate("/profile");
     } catch (error) {
