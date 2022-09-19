@@ -47,8 +47,8 @@ function SignIn() {
 
   return (
     <>
-      <div className="container">
-        <div className="logo">
+      <div className="home-container">
+        <div id="logo">
           <img
             src={logoIcon}
             alt=""
@@ -61,7 +61,7 @@ function SignIn() {
           </p>
         </div>
 
-        <div className="card-form">
+        <div className="card-form sign-in-form">
           <header>
             <h3 className="title fs-38 mb-15">Sign in</h3>
             <p className="c-medium-grey fs-16">
