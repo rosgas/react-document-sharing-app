@@ -3,62 +3,49 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
+import Account from "../components/Account";
+import ProfileNav from "../components/ProfileNav";
+import Sidebar from "../components/Sidebar";
+import Modal from "../components/Modal";
+import CollectionItems from "../components/CollectionItems";
+import arrowDown from "../assets/svg/arrow-down-triangle.svg";
+import plusIcon from "../assets/svg/plus.svg";
 
 function Profile() {
-  const auth = getAuth();
-  const [userDetails, setUserDetails] = useState({
-    fullName: "",
-    jobTitle: "",
-    email: "",
-  });
-
-  const { fullName, jobTitle, email } = userDetails;
-
-  useEffect(() => {
-    const fetchuserFormData = async () => {
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      const docSnap = await getDoc(userRef);
-      const userData = docSnap.data().userFormData;
-
-      if (docSnap.exists()) {
-        setUserDetails({
-          fullName: userData.name,
-          jobTitle: userData.jobTitle,
-          email: userData.email,
-        });
-      } else {
-        console.log("No such document!");
-      }
-    };
-
-    fetchuserFormData();
-  }, [auth.currentUser.uid]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const onLogout = () => {
-    auth.signOut(navigate("/"));
-  };
+  useEffect(() => {
+    navigate("/profile/gallery");
+  }, []);
 
   return (
-    <div className="profile">
-      <header>
-        <h2>My profile</h2>
-        <p>{fullName}</p>
-        <p>{jobTitle}</p>
-        <p>{email}</p>
-        <button type="button" className="btn btn-main" onClick={onLogout}>
-          Logout
-        </button>
-      </header>
+    <div className="container">
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
+      <ProfileNav />
+      <Sidebar />
+      <section className="collections">
+        <div className="fixed">
+          <div className="flex">
+            <div className="collection-name">
+              <h3>All Designs</h3>
+              <img src={arrowDown} style={{ cursor: "pointer" }} />
+            </div>
+            <button
+              className="btn btn-main add-btn btn-small"
+              onClick={() => setIsOpen(true)}
+            >
+              <img src={plusIcon} height="16px" />
+              Add new
+            </button>
+          </div>
+          <div className="line"></div>
+        </div>
+        <CollectionItems />
+      </section>
     </div>
   );
 }
 
 export default Profile;
-
-/* function Profile() {
-  return <></>;
-}
-
-export default Profile; */
