@@ -38,7 +38,7 @@ function SignIn() {
       );
 
       if (userCredential.user) {
-        navigate("/profile");
+        navigate("/u");
       }
     } catch (error) {
       setErrorMessage("Incorrect email address or password");

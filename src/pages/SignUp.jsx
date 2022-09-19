@@ -54,7 +54,7 @@ function SignUp() {
 
       await setDoc(doc(db, "users", user.uid), { userFormData });
 
-      navigate("/profile");
+      navigate("/u");
     } catch (error) {
       console.log(error);
       if (error.code == "auth/weak-password") {

@@ -18,8 +18,7 @@ function CollectionItem({ item, id, setIsShown }) {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate(`${id}`);
-    /* setIsShown(false); */
+    navigate(`/u/document/${id}`);
   }
 
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
@@ -119,6 +119,7 @@ function Modal({ setIsOpen }) {
     );
 
     setIsOpen(false);
+    navigate("/u/gallery");
   };
 
   const onMutate = (e) => {
@@ -133,7 +134,11 @@ function Modal({ setIsOpen }) {
 
   return (
     <>
-      <div className="bg-dark" onClick={() => setIsOpen(false)}></div>
+      <Link
+        to="/u/gallery"
+        className="bg-dark"
+        onClick={() => setIsOpen(false)}
+      ></Link>
       <form className="design-form" onSubmit={onSubmit}>
         <h5 className="title fs-24 mb-25">Add new design</h5>
         <div className="form-group">
@@ -174,10 +179,16 @@ function Modal({ setIsOpen }) {
           <label htmlFor="img">Image:</label>
         </div>
         <div className="btns">
-          <button className="btn-basic" onClick={() => setIsOpen(false)}>
+          <Link
+            to="/u/gallery"
+            className="btn-basic"
+            onClick={() => setIsOpen(false)}
+          >
             Cancel
+          </Link>
+          <button to="/u/gallery" className="btn btn-main btn-small">
+            Add
           </button>
-          <button className="btn btn-main btn-small">Add</button>
         </div>
       </form>
     </>

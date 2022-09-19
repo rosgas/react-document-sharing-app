@@ -10,7 +10,6 @@ import Spinner from "./Spinner";
 function CollectionItems() {
   const [loading, setLoading] = useState(true);
   const [collections, setCollections] = useState();
-  /* const [isShown, setIsShown] = useState(true); */
 
   const auth = getAuth();
 
@@ -49,15 +48,6 @@ function CollectionItems() {
               key={item.id}
             />
           ))}
-          {/* {isShown &&
-            collections.map((item) => (
-              <CollectionItem
-                item={item.data.dataCopy}
-                id={item.id}
-                key={item.id}
-                setIsShown={setIsShown}
-              />
-            ))} */}
         </div>
       </>
     );
