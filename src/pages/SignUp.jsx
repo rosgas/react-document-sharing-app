@@ -67,8 +67,8 @@ function SignUp() {
 
   return (
     <>
-      <div className="container">
-        <div className="logo">
+      <div className="home-container">
+        <div id="logo">
           <img
             src={logoIcon}
             alt=""
@@ -81,7 +81,7 @@ function SignUp() {
           </p>
         </div>
 
-        <div className="card-form">
+        <div className="card-form sign-up-form">
           <header>
             <h3 className="title fs-38 mb-15">Create account</h3>
             <p className="c-medium-grey fs-16">
