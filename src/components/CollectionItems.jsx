@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { doc, getDocs, query, orderBy, collection } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase.config";
 import CollectionItem from "./CollectionItem";
 import Spinner from "./Spinner";
@@ -10,8 +7,6 @@ import Spinner from "./Spinner";
 function CollectionItems() {
   const [loading, setLoading] = useState(true);
   const [collections, setCollections] = useState();
-
-  const auth = getAuth();
 
   useEffect(() => {
     const fetchCollections = async () => {
@@ -28,7 +23,6 @@ function CollectionItems() {
         });
         setCollections(collections);
         setLoading(false);
-        console.log(collections);
       } catch (error) {
         console.log("Could not fetch collections");
       }
@@ -40,7 +34,7 @@ function CollectionItems() {
   if (!loading) {
     return (
       <>
-        <div className="collections-items">
+        <div className="collection-items">
           {collections.map((item) => (
             <CollectionItem
               item={item.data.dataCopy}
