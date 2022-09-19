@@ -1,10 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import logoIcon from "../assets/png/icons8-shared-folder-64.png";
 import visibilityIcon from "../assets/svg/visibility.svg";
 

@@ -70,7 +70,6 @@ function Modal({ setIsOpen }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     const storage = getStorage();
     const file = e.target[3]?.files[0];
@@ -110,8 +109,6 @@ function Modal({ setIsOpen }) {
             timestamp: serverTimestamp(),
             imgUrl: downloadURL.toString(),
           };
-
-          console.log(dataCopy);
 
           addDoc(collection(db, "designs"), { dataCopy });
         });
