@@ -42,8 +42,16 @@ body {
   font-size: 24px;
 }
 
+.fs-20 {
+  font-size: 20px;
+}
+
 .fs-16 {
   font-size: 16px;
+}
+
+.fw-400 {
+  font-weight: 400;
 }
 
 .c-light-grey {
@@ -116,14 +124,29 @@ body {
 .btn-sidebar {
   background-color: var(--c-light-grey-b);
   width: calc(100% - 20px);
-  margin-left: 10px;
+  margin: 0 0 0 10px;
   text-align: start;
+  font-weight: 600;
   color: var(--c-light-grey);
+  display: flex;
+  align-items: center;
+  gap: 10px;
   transition: 0.2 ease-in-out;
 }
 
 .btn-sidebar:hover {
   background-color: rgba(0, 123, 255, 0.1);
+}
+
+.btn-top {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 2px;
+}
+
+.btn-bottom {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .add-btn {
@@ -140,6 +163,34 @@ body {
   justify-content: end;
   gap: 30px;
 }
+
+.attachment-btn {
+  position: relative;
+  background-color: transparent;
+  padding: 8px 16px 8px 35px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border: 1px solid var(--c-grey);
+  border-radius: 4px;
+  font-family: var(--main-font-fam);
+  font-size: 16px;
+  color: var(--c-grey);
+  cursor: pointer;
+}
+
+.attachment-btn:hover {
+  background-color: var(--c-light-grey-b);
+}
+
+.attachment-btn:before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 16px;
+  height: 20px;
+  background: url("./assets/svg/attachment.svg") no-repeat center center/cover;
+}
+
 /* Links */
 
 .link {
@@ -396,7 +447,7 @@ body {
   left: 0;
   top: 0;
   height: 100%;
-  width: 300px;
+  width: 280px;
   min-width: 200px;
   background-color: var(--c-white);
   z-index: 4;
@@ -405,6 +456,10 @@ body {
 #sidebar #logo {
   padding: 0 10px;
   transform: translateY(-10px) scale(0.8);
+}
+
+.actions {
+  margin-top: 155px;
 }
 
 .logout {
@@ -471,14 +526,15 @@ body {
 /* Section collection items */
 .collections {
   position: absolute;
+  width: 100%;
   top: 70px;
-  padding: 0px 60px 20px 360px;
+  padding: 0px 40px 20px 320px;
   background-color: var(--c-light-grey-b);
 }
 
 .fixed {
   position: fixed;
-  width: calc(100% - 420px);
+  width: calc(100% - 360px);
   padding: 30px 0 10px;
   background-color: var(--c-light-grey-b);
   z-index: 2;
@@ -502,9 +558,10 @@ body {
   background-color: var(--c-light-grey-a);
 }
 
-.collections-items {
+.collection-items {
   position: relative;
   margin: 120px 0;
+  padding-bottom: 5px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -519,9 +576,11 @@ body {
   border-radius: 4px;
   background-color: var(--c-white);
   border: 2px solid transparent;
+  box-shadow: 0 2px 2px var(--c-light-grey-a);
   cursor: pointer;
   overflow: hidden;
   transition: 0.05s ease;
+  padding: 5px 0;
 }
 
 .item-card:hover {
@@ -534,7 +593,6 @@ body {
   display: flex;
   align-items: center;
   height: 15%;
-  margin: 5px;
   overflow: hidden;
   padding: 10px;
 }
@@ -639,4 +697,113 @@ body {
   border-radius: 50%;
   transform: translateY(-50%) translateX(-50%);
   background-color: var(--c-grey);
+}
+
+/* Doc item */
+.doc-container {
+  position: relative;
+  width: 100%;
+  margin: 120px 0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+.doc-content {
+  position: relative;
+  background-color: var(--c-white);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.doc-content img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.doc-flex {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.share {
+  position: absolute;
+  right: 20px;
+}
+
+.doc-text {
+  padding: 0 20px;
+}
+
+.doc-title {
+  color: var(--c-deep-dark);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.doc-subtitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.doc-description {
+  margin-bottom: 25px;
+  color: var(--c-light-grey);
+}
+
+.comments-box {
+  background-color: var(--c-white);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.doc-attachment {
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 1200px) {
+  #sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    min-width: 200px;
+    background-color: var(--c-white);
+    z-index: 4;
+  }
+
+  .collections {
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    padding: 0px 40px 20px 240px;
+    background-color: var(--c-light-grey-b);
+  }
+
+  .fixed {
+    position: fixed;
+    width: calc(100% - 280px);
+    padding: 30px 0 10px;
+    background-color: var(--c-light-grey-b);
+    z-index: 2;
+  }
+
+  .collection-items {
+    position: relative;
+    margin: 120px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1;
+  }
 }
