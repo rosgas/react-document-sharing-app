@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import Profile from "../pages/Profile";
 import logoIcon from "../assets/png/icons8-shared-folder-64.png";
+import compassIcon from "../assets/svg/compass.svg";
+import teamIcon from "../assets/svg/team.svg";
+import dashboardIcon from "../assets/svg/dash.svg";
 
 function Sidebar() {
   const auth = getAuth();
@@ -25,13 +27,26 @@ function Sidebar() {
             ShareDoc
           </p>
         </div>
-        <button
-          type="button"
-          className="btn btn-sidebar logout"
-          onClick={onLogout}
-        >
-          Logout
-        </button>
+
+        <div className="actions">
+          <div className="line mb-15"></div>
+          <button type="button" className="btn btn-sidebar btn-top">
+            <img src={dashboardIcon} alt="" /> Dashboard
+          </button>
+          <button type="button" className="btn btn-sidebar btn-top">
+            <img src={teamIcon} alt="" /> Teams
+          </button>
+          <button type="button" className="btn btn-sidebar btn-bottom">
+            <img src={compassIcon} alt="" /> My docs
+          </button>
+          <button
+            type="button"
+            className="btn btn-sidebar logout"
+            onClick={onLogout}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </>
   );
